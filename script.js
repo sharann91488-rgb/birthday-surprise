@@ -33,9 +33,9 @@ function show(mem) {
   content.innerHTML =
     mem.type === "image"
       ? `<img src="${mem.src}"><p>${mem.text}</p>`
-      : `<video src="${mem.src}" controls autoplay></video><p>${mem.text}</p>`;
+      : `<video src="${mem.src}" controls autoplay playsinline></video><p>${mem.text}</p>`;
 
-  modal.style.display = "block";
+  modal.style.display = "flex";
 }
 
 function closeModal() {
