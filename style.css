@@ -12,7 +12,7 @@ body {
   background: radial-gradient(circle at top, #0a0f2c, #000010);
 }
 
-/* ================= FLOATING IMAGES (CONTINUOUS) ================= */
+/* ================= FLOATING IMAGES (PURE SMOOTH LOOP) ================= */
 .floating-images {
   position: absolute;
   inset: 0;
@@ -20,47 +20,41 @@ body {
   pointer-events: none;
 }
 
-/* BASE IMAGE STYLE */
+/* BASE FLOAT STYLE */
 .float {
   position: absolute;
-  bottom: -30vh;
   width: 160px;
   height: auto;
+  bottom: -30vh;
   border-radius: 20px;
   opacity: 0.85;
+
+  /* THIS IS THE KEY */
+  animation: floatUpSmooth 40s linear infinite;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
-/* GROUP 1 (first 3 images) */
-.f1 { left: 18%; animation: floatY 30s linear infinite, swayX 6s ease-in-out infinite; }
-.f2 { left: 42%; animation: floatY 34s linear infinite, swayX 7s ease-in-out infinite; }
-.f3 { left: 66%; animation: floatY 32s linear infinite, swayX 5.5s ease-in-out infinite; }
+/* stagger vertical positions instead of animation delays */
+.f1 { left: 20%; animation-delay: 0s; }
+.f2 { left: 40%; animation-delay: -13s; }
+.f3 { left: 60%; animation-delay: -26s; }
 
-/* GROUP 2 (next 3 images) – offset start position */
-.f4 { left: 26%; animation: floatY2 30s linear infinite, swayX 6s ease-in-out infinite; }
-.f5 { left: 50%; animation: floatY2 34s linear infinite, swayX 7s ease-in-out infinite; }
-.f6 { left: 74%; animation: floatY2 32s linear infinite, swayX 5.5s ease-in-out infinite; }
+.f4 { left: 30%; animation-delay: -6s; }
+.f5 { left: 50%; animation-delay: -19s; }
+.f6 { left: 70%; animation-delay: -32s; }
 
-/* CONTINUOUS UPWARD FLOW (NO STOP) */
-@keyframes floatY {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-160vh); }
+/* SINGLE CONTINUOUS MOTION */
+@keyframes floatUpSmooth {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -180vh, 0);
+  }
 }
 
-/* SAME SPEED, DIFFERENT START OFFSET */
-@keyframes floatY2 {
-  from { transform: translateY(80vh); }
-  to   { transform: translateY(-160vh); }
-}
-
-/* GENTLE SIDE MOTION */
-@keyframes swayX {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(14px); }
-  100% { transform: translateX(0); }
-}
-
-/* ================= CENTER CONTENT ================= */
+/* ================= CENTER ================= */
 .center-content {
   position: absolute;
   inset: 0;
@@ -82,7 +76,7 @@ button {
   cursor: pointer;
 }
 
-/* ================= STARS PAGE (UNCHANGED) ================= */
+/* ================= STARS PAGE ================= */
 .stars-page {
   background: radial-gradient(circle at bottom, #020024, #000);
   height: 100vh;
