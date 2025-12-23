@@ -6,59 +6,61 @@ body {
   overflow: hidden;
 }
 
-/* ===== HOME BACKGROUND ===== */
+/* ================= HOME ================= */
 .home {
   height: 100vh;
   background: radial-gradient(circle at top, #0a0f2c, #000010);
 }
 
-/* ===== FLOATING IMAGES (SMOOTH & GPU FRIENDLY) ===== */
+/* ================= FLOATING IMAGES (CONTINUOUS) ================= */
 .floating-images {
   position: absolute;
   inset: 0;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
 }
 
+/* BASE IMAGE STYLE */
 .float {
   position: absolute;
-  bottom: -220px;
+  bottom: -30vh;
   width: 160px;
   height: auto;
-  opacity: 0;
   border-radius: 20px;
-  will-change: transform, opacity;
-  animation:
-    floatUp 30s linear infinite,
-    sway 6s ease-in-out infinite;
+  opacity: 0.85;
+  will-change: transform;
 }
 
-/* BATCH 1 */
-.f1 { left: 18%; animation-delay: 2s, 0s; }
-.f2 { left: 42%; animation-delay: 2s, 1s; }
-.f3 { left: 66%; animation-delay: 2s, 2s; }
+/* GROUP 1 (first 3 images) */
+.f1 { left: 18%; animation: floatY 30s linear infinite, swayX 6s ease-in-out infinite; }
+.f2 { left: 42%; animation: floatY 34s linear infinite, swayX 7s ease-in-out infinite; }
+.f3 { left: 66%; animation: floatY 32s linear infinite, swayX 5.5s ease-in-out infinite; }
 
-/* BATCH 2 */
-.f4 { left: 26%; animation-delay: 16s, 0s; }
-.f5 { left: 50%; animation-delay: 16s, 1s; }
-.f6 { left: 74%; animation-delay: 16s, 2s; }
+/* GROUP 2 (next 3 images) – offset start position */
+.f4 { left: 26%; animation: floatY2 30s linear infinite, swayX 6s ease-in-out infinite; }
+.f5 { left: 50%; animation: floatY2 34s linear infinite, swayX 7s ease-in-out infinite; }
+.f6 { left: 74%; animation: floatY2 32s linear infinite, swayX 5.5s ease-in-out infinite; }
 
-/* Vertical movement (perfectly smooth) */
-@keyframes floatUp {
-  0%   { transform: translateY(0); opacity: 0; }
-  10%  { opacity: 0.85; }
-  90%  { opacity: 0.85; }
-  100% { transform: translateY(-140vh); opacity: 0; }
+/* CONTINUOUS UPWARD FLOW (NO STOP) */
+@keyframes floatY {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-160vh); }
 }
 
-/* Gentle horizontal sway */
-@keyframes sway {
+/* SAME SPEED, DIFFERENT START OFFSET */
+@keyframes floatY2 {
+  from { transform: translateY(80vh); }
+  to   { transform: translateY(-160vh); }
+}
+
+/* GENTLE SIDE MOTION */
+@keyframes swayX {
   0%   { transform: translateX(0); }
-  50%  { transform: translateX(15px); }
+  50%  { transform: translateX(14px); }
   100% { transform: translateX(0); }
 }
 
-/* ===== CENTER CONTENT ===== */
+/* ================= CENTER CONTENT ================= */
 .center-content {
   position: absolute;
   inset: 0;
@@ -80,7 +82,7 @@ button {
   cursor: pointer;
 }
 
-/* ===== STARS PAGE ===== */
+/* ================= STARS PAGE (UNCHANGED) ================= */
 .stars-page {
   background: radial-gradient(circle at bottom, #020024, #000);
   height: 100vh;
@@ -97,7 +99,7 @@ button {
   height: 85vh;
 }
 
-/* ===== STAR ===== */
+/* STAR */
 .star {
   position: absolute;
   width: 24px;
@@ -137,7 +139,7 @@ button {
 .star:nth-child(14){top:30%;left:90%}
 .star:nth-child(15){top:85%;left:55%}
 
-/* ===== MODAL ===== */
+/* ================= MODAL ================= */
 .modal {
   display: none;
   position: fixed;
@@ -155,11 +157,6 @@ button {
   border-radius: 24px;
 }
 
-.modal p {
-  color: white;
-  margin-top: 15px;
-}
-
 .close {
   position: absolute;
   top: 20px;
@@ -168,7 +165,7 @@ button {
   cursor: pointer;
 }
 
-/* ===== BIRTHDAY BLAST ===== */
+/* ================= BIRTHDAY ================= */
 .blast {
   display: none;
   position: fixed;
