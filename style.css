@@ -6,13 +6,13 @@ body {
   overflow: hidden;
 }
 
-/* ================= HOME PAGE (UNCHANGED) ================= */
+/* ===== HOME BACKGROUND ===== */
 .home {
   height: 100vh;
   background: radial-gradient(circle at top, #0a0f2c, #000010);
 }
 
-/* ================= FLOATING IMAGES (UNCHANGED) ================= */
+/* ===== FLOATING IMAGES (FINAL, POLISHED) ===== */
 .floating-images {
   position: absolute;
   inset: 0;
@@ -31,21 +31,44 @@ body {
   animation: floatSequence 30s cubic-bezier(.22,.61,.36,1) infinite;
 }
 
-/* positions */
+/* First batch (3 images) */
 .f1 { left: 18%; animation-delay: 2s; }
 .f2 { left: 42%; animation-delay: 2s; }
 .f3 { left: 66%; animation-delay: 2s; }
+
+/* Second batch (3 images) */
 .f4 { left: 26%; animation-delay: 16s; }
 .f5 { left: 50%; animation-delay: 16s; }
 .f6 { left: 74%; animation-delay: 16s; }
 
 @keyframes floatSequence {
-  0% { transform: translateY(0); opacity: 0; }
-  12% { opacity: 0.85; }
-  100% { transform: translateY(-140vh); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0) scale(0.95);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  12% {
+    opacity: 0.85;
+    filter: blur(0);
+  }
+  30% {
+    transform: translateY(-35vh) translateX(-18px) scale(1);
+  }
+  50% {
+    transform: translateY(-70vh) translateX(18px) scale(1.02);
+  }
+  75% {
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  100% {
+    transform: translateY(-140vh) translateX(-10px) scale(1.05);
+    opacity: 0;
+    filter: blur(3px);
+  }
 }
 
-/* ================= CENTER ================= */
+/* ===== CENTER ===== */
 .center-content {
   position: absolute;
   inset: 0;
@@ -57,54 +80,39 @@ body {
   text-align: center;
 }
 
-/* ================= 🌌 STARS / SPACE PAGE ================= */
+button {
+  margin-top: 20px;
+  padding: 16px 50px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg,#ffd27d,#ff9f5a);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ===== STARS PAGE ===== */
 .stars-page {
+  background: radial-gradient(circle at bottom, #020024, #000);
   height: 100vh;
-  background:
-    radial-gradient(circle at 30% 20%, #1b1f4a, transparent 40%),
-    radial-gradient(circle at 70% 60%, #0b0f2a, transparent 50%),
-    radial-gradient(circle at bottom, #020024, #000);
   color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtle moving nebula */
-.stars-page::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.25;
-  animation: driftBg 120s linear infinite;
-}
-
-@keyframes driftBg {
-  from { transform: translate(0,0); }
-  to { transform: translate(200px, 200px); }
 }
 
 .title {
   text-align: center;
   padding-top: 20px;
-  font-size: 20px;
-  letter-spacing: 1px;
-  z-index: 2;
-  position: relative;
 }
 
 .sky {
   position: relative;
   height: 85vh;
-  z-index: 2;
 }
 
-/* ================= ⭐ STAR ================= */
+/* ===== STAR ===== */
 .star {
   position: absolute;
-  width: 22px;
-  height: 22px;
-  background: radial-gradient(circle, #ffffff, #ffd27d);
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle,#fff,#ffd27d);
   clip-path: polygon(
     50% 0%, 61% 35%, 98% 35%,
     68% 57%, 79% 91%,
@@ -112,27 +120,17 @@ body {
     32% 57%, 2% 35%,
     39% 35%
   );
-  box-shadow:
-    0 0 10px rgba(255,255,255,0.8),
-    0 0 25px rgba(255,210,125,0.9);
+  box-shadow: 0 0 20px rgba(255,210,125,0.8);
+  animation: starPulse 3s ease-in-out infinite alternate;
   cursor: pointer;
-
-  animation:
-    twinkle 3s ease-in-out infinite alternate,
-    driftStar 40s linear infinite;
 }
 
-@keyframes twinkle {
-  from { transform: scale(0.9); opacity: 0.6; }
-  to { transform: scale(1.1); opacity: 1; }
+@keyframes starPulse {
+  from { transform: scale(0.9); opacity: 0.7; }
+  to { transform: scale(1.05); opacity: 1; }
 }
 
-@keyframes driftStar {
-  from { transform: translateX(0); }
-  to { transform: translateX(-120px); }
-}
-
-/* Star positions (kept same for memory order) */
+/* Star positions */
 .star:nth-child(1){top:15%;left:10%}
 .star:nth-child(2){top:25%;left:30%}
 .star:nth-child(3){top:35%;left:50%}
@@ -149,7 +147,7 @@ body {
 .star:nth-child(14){top:30%;left:90%}
 .star:nth-child(15){top:85%;left:55%}
 
-/* ================= MODAL ================= */
+/* ===== MODAL ===== */
 .modal {
   display: none;
   position: fixed;
@@ -167,6 +165,11 @@ body {
   border-radius: 24px;
 }
 
+.modal p {
+  color: white;
+  margin-top: 15px;
+}
+
 .close {
   position: absolute;
   top: 20px;
@@ -175,7 +178,7 @@ body {
   cursor: pointer;
 }
 
-/* ================= BIRTHDAY BLAST ================= */
+/* ===== BIRTHDAY BLAST ===== */
 .blast {
   display: none;
   position: fixed;
