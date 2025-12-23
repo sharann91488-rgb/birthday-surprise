@@ -1,46 +1,27 @@
-/***********************
- * GSAP FLOATING (INSTANT & SMOOTH)
- ***********************/
+/* GSAP FLOATING */
 window.addEventListener("load", () => {
   const floats = gsap.utils.toArray(".float");
-  const h = window.innerHeight;
 
   floats.forEach((img, i) => {
+    const startY = Math.random() * window.innerHeight;
+    const endY = -window.innerHeight - 200;
 
-    // Start images already inside viewport
-    const startY = gsap.utils.random(0, h);
-    const speed = gsap.utils.random(30, 38);
+    gsap.set(img, { y: startY, opacity: 1 });
 
-    gsap.set(img, {
-      y: startY,
-      opacity: 1
-    });
-
-    // Continuous upward motion (no reset jump)
     gsap.to(img, {
-      y: -h - 200,
-      duration: speed,
+      y: endY,
+      duration: 35,
       ease: "none",
       repeat: -1,
       modifiers: {
-        y: gsap.utils.unitize(y => parseFloat(y) % (h + 250))
+        y: y => `${parseFloat(y) % (window.innerHeight + 400)}px`,
+        x: () => Math.sin(Date.now() / 1000 + i) * 18
       }
-    });
-
-    // Gentle horizontal sway
-    gsap.to(img, {
-      x: gsap.utils.random(-20, 20),
-      duration: gsap.utils.random(4, 6),
-      ease: "sine.inOut",
-      repeat: -1,
-      yoyo: true
     });
   });
 });
 
-/***********************
- * STARS / MEMORIES
- ***********************/
+/* MEMORY LOGIC */
 let index = 0;
 
 const memories = [
