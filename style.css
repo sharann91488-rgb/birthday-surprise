@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
+/* ================= GLOBAL ================= */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -7,14 +8,14 @@ body {
   background: #000;
 }
 
-/* HOME */
+/* ================= HOME PAGE ================= */
 .home {
   height: 100vh;
   background: radial-gradient(circle at top, #0a0f2c, #000010);
   position: relative;
 }
 
-/* FLOATING IMAGES */
+/* ================= FLOATING IMAGES ================= */
 .floating-images {
   position: absolute;
   inset: 0;
@@ -22,18 +23,23 @@ body {
   overflow: hidden;
 }
 
+/* 
+  IMPORTANT:
+  - Images are hidden initially
+  - GSAP will show them in correct order
+*/
 .float {
   position: absolute;
   bottom: -200px;
   width: 160px;
   height: auto;
   border-radius: 20px;
-  opacity: 0.9;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  opacity: 0; /* KEY: prevents all images appearing at once */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   will-change: transform;
 }
 
-/* horizontal placement */
+/* Horizontal placement (only X-axis here) */
 .f1 { left: 18%; }
 .f2 { left: 38%; }
 .f3 { left: 58%; }
@@ -41,7 +47,7 @@ body {
 .f5 { left: 48%; }
 .f6 { left: 68%; }
 
-/* CENTER CONTENT */
+/* ================= CENTER CONTENT ================= */
 .center-content {
   position: absolute;
   inset: 0;
@@ -49,9 +55,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #ffffff;
   text-align: center;
   z-index: 2;
+}
+
+.center-content h1 {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.center-content p {
+  font-size: 16px;
+  opacity: 0.85;
 }
 
 button {
@@ -59,21 +76,30 @@ button {
   padding: 16px 52px;
   border-radius: 50px;
   border: none;
-  background: linear-gradient(135deg,#ffd27d,#ff9f5a);
+  background: linear-gradient(135deg, #ffd27d, #ff9f5a);
   font-size: 18px;
   cursor: pointer;
+  box-shadow: 0 12px 35px rgba(255, 160, 90, 0.4);
+  transition: transform 0.25s ease;
 }
 
-/* STARS PAGE */
+button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= STARS PAGE ================= */
 .stars-page {
   height: 100vh;
   background: radial-gradient(circle at bottom, #020024, #000);
   color: white;
+  position: relative;
 }
 
 .title {
   text-align: center;
   padding-top: 20px;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
 .sky {
@@ -81,12 +107,12 @@ button {
   height: 85vh;
 }
 
-/* STAR */
+/* ================= STAR ================= */
 .star {
   position: absolute;
   width: 24px;
   height: 24px;
-  background: radial-gradient(circle,#fff,#ffd27d);
+  background: radial-gradient(circle, #ffffff, #ffd27d);
   clip-path: polygon(
     50% 0%, 61% 35%, 98% 35%,
     68% 57%, 79% 91%,
@@ -94,39 +120,45 @@ button {
     32% 57%, 2% 35%,
     39% 35%
   );
-  box-shadow: 0 0 18px rgba(255,210,125,0.9);
+  box-shadow: 0 0 18px rgba(255, 210, 125, 0.9);
   animation: starPulse 3s ease-in-out infinite alternate;
   cursor: pointer;
 }
 
 @keyframes starPulse {
-  from { transform: scale(0.9); opacity: 0.7; }
-  to { transform: scale(1.05); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 }
 
-/* STAR POSITIONS */
-.star:nth-child(1){top:15%;left:10%}
-.star:nth-child(2){top:25%;left:30%}
-.star:nth-child(3){top:35%;left:50%}
-.star:nth-child(4){top:45%;left:70%}
-.star:nth-child(5){top:55%;left:85%}
-.star:nth-child(6){top:65%;left:60%}
-.star:nth-child(7){top:20%;left:80%}
-.star:nth-child(8){top:40%;left:20%}
-.star:nth-child(9){top:60%;left:40%}
-.star:nth-child(10){top:70%;left:15%}
-.star:nth-child(11){top:10%;left:50%}
-.star:nth-child(12){top:75%;left:75%}
-.star:nth-child(13){top:80%;left:30%}
-.star:nth-child(14){top:30%;left:90%}
-.star:nth-child(15){top:85%;left:55%}
+/* Star positions */
+.star:nth-child(1)  { top:15%; left:10%; }
+.star:nth-child(2)  { top:25%; left:30%; }
+.star:nth-child(3)  { top:35%; left:50%; }
+.star:nth-child(4)  { top:45%; left:70%; }
+.star:nth-child(5)  { top:55%; left:85%; }
+.star:nth-child(6)  { top:65%; left:60%; }
+.star:nth-child(7)  { top:20%; left:80%; }
+.star:nth-child(8)  { top:40%; left:20%; }
+.star:nth-child(9)  { top:60%; left:40%; }
+.star:nth-child(10) { top:70%; left:15%; }
+.star:nth-child(11) { top:10%; left:50%; }
+.star:nth-child(12) { top:75%; left:75%; }
+.star:nth-child(13) { top:80%; left:30%; }
+.star:nth-child(14) { top:30%; left:90%; }
+.star:nth-child(15) { top:85%; left:55%; }
 
-/* MODAL */
+/* ================= MODAL ================= */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   text-align: center;
   padding-top: 50px;
   z-index: 10;
@@ -137,6 +169,13 @@ button {
   max-width: 80%;
   max-height: 60vh;
   border-radius: 24px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+.modal p {
+  color: white;
+  margin-top: 15px;
+  font-size: 18px;
 }
 
 .close {
@@ -147,7 +186,7 @@ button {
   cursor: pointer;
 }
 
-/* BIRTHDAY BLAST */
+/* ================= BIRTHDAY BLAST ================= */
 .blast {
   display: none;
   position: fixed;
@@ -164,15 +203,20 @@ button {
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle,rgba(255,255,255,0.15),rgba(0,0,0,0.6));
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.15),
+    rgba(0,0,0,0.6)
+  );
 }
 
 .blast-text {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   color: white;
+  text-align: center;
 }
