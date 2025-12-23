@@ -1,5 +1,5 @@
 /*************************************************
- * GSAP FLOATING — 3 IMAGES → THEN 3 IMAGES
+ * GSAP FLOATING — FIX INITIAL SNAP (FINAL)
  *************************************************/
 window.addEventListener("load", () => {
 
@@ -7,53 +7,37 @@ window.addEventListener("load", () => {
   const batch2 = document.querySelectorAll(".f4, .f5, .f6");
 
   const screenH = window.innerHeight;
+  const travel = screenH + 400;
   const startY = screenH + 200;
-  const endY = -screenH - 200;
+  const endY = -200;
   const duration = 32;
 
-  // MASTER TIMELINE (controls order)
-  const tl = gsap.timeline({ repeat: -1 });
+  // Helper: smooth infinite float without snap
+  function floatImage(img, startOffset) {
+    // Place image already inside motion path
+    gsap.set(img, {
+      y: startOffset,
+      opacity: 1
+    });
+
+    gsap.to(img, {
+      y: `-=${travel}`,
+      duration: duration,
+      ease: "none",
+      repeat: -1
+    });
+  }
 
   /* ---------- FIRST 3 IMAGES ---------- */
   batch1.forEach((img, i) => {
-    gsap.set(img, {
-      y: startY + i * 120
-    });
-
-    tl.to(img, {
-      opacity: 1,
-      duration: 0.01
-    }, 0);
-
-    tl.to(img, {
-      y: endY,
-      duration: duration,
-      ease: "none",
-      modifiers: {
-        y: y => `${parseFloat(y) % (screenH + 400)}px`
-      }
-    }, 0);
+    const offset = startY - i * 120;
+    floatImage(img, offset);
   });
 
-  /* ---------- SECOND 3 IMAGES ---------- */
+  /* ---------- NEXT 3 IMAGES ---------- */
   batch2.forEach((img, i) => {
-    gsap.set(img, {
-      y: startY + i * 120
-    });
-
-    tl.to(img, {
-      opacity: 1,
-      duration: 0.01
-    }, duration / 2);
-
-    tl.to(img, {
-      y: endY,
-      duration: duration,
-      ease: "none",
-      modifiers: {
-        y: y => `${parseFloat(y) % (screenH + 400)}px`
-      }
-    }, duration / 2);
+    const offset = startY - i * 120 - screenH / 2;
+    floatImage(img, offset);
   });
 });
 
