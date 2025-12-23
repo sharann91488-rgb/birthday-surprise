@@ -23,18 +23,13 @@ body {
 /* BASE FLOAT STYLE */
 .float {
   position: absolute;
+  bottom: -220px;
   width: 160px;
   height: auto;
-  bottom: -30vh;
   border-radius: 20px;
-  opacity: 0.85;
-
-  /* THIS IS THE KEY */
-  animation: floatUpSmooth 40s linear infinite;
-  transform: translate3d(0, 0, 0);
+  opacity: 0.9;
   will-change: transform;
 }
-
 /* stagger vertical positions instead of animation delays */
 .f1 { left: 20%; animation-delay: 0s; }
 .f2 { left: 40%; animation-delay: -13s; }
@@ -187,3 +182,4 @@ button {
   flex-direction: column;
   color: white;
 }
+
