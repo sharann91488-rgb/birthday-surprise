@@ -7,41 +7,41 @@ body {
   background: #000;
 }
 
-/* ================= HOME ================= */
+/* HOME */
 .home {
   height: 100vh;
   background: radial-gradient(circle at top, #0a0f2c, #000010);
   position: relative;
 }
 
-/* ================= FLOATING IMAGES ================= */
+/* FLOATING IMAGES */
 .floating-images {
   position: absolute;
   inset: 0;
-  overflow: hidden;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .float {
   position: absolute;
-  bottom: 0;
+  bottom: -200px;
   width: 160px;
   height: auto;
   border-radius: 20px;
   opacity: 0.9;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   will-change: transform;
 }
 
-/* Horizontal positions */
-.f1 { left: 15%; }
-.f2 { left: 35%; }
-.f3 { left: 55%; }
-.f4 { left: 25%; }
-.f5 { left: 45%; }
-.f6 { left: 65%; }
+/* horizontal placement */
+.f1 { left: 18%; }
+.f2 { left: 38%; }
+.f3 { left: 58%; }
+.f4 { left: 28%; }
+.f5 { left: 48%; }
+.f6 { left: 68%; }
 
-/* ================= CENTER ================= */
+/* CENTER CONTENT */
 .center-content {
   position: absolute;
   inset: 0;
@@ -55,7 +55,7 @@ body {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 24px;
   padding: 16px 52px;
   border-radius: 50px;
   border: none;
@@ -64,7 +64,7 @@ button {
   cursor: pointer;
 }
 
-/* ================= STARS PAGE ================= */
+/* STARS PAGE */
 .stars-page {
   height: 100vh;
   background: radial-gradient(circle at bottom, #020024, #000);
@@ -101,10 +101,10 @@ button {
 
 @keyframes starPulse {
   from { transform: scale(0.9); opacity: 0.7; }
-  to   { transform: scale(1.05); opacity: 1; }
+  to { transform: scale(1.05); opacity: 1; }
 }
 
-/* Star positions */
+/* STAR POSITIONS */
 .star:nth-child(1){top:15%;left:10%}
 .star:nth-child(2){top:25%;left:30%}
 .star:nth-child(3){top:35%;left:50%}
@@ -121,13 +121,12 @@ button {
 .star:nth-child(14){top:30%;left:90%}
 .star:nth-child(15){top:85%;left:55%}
 
-/* ================= MODAL ================= */
+/* MODAL */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
   text-align: center;
   padding-top: 50px;
   z-index: 10;
@@ -148,7 +147,7 @@ button {
   cursor: pointer;
 }
 
-/* ================= BIRTHDAY ================= */
+/* BIRTHDAY BLAST */
 .blast {
   display: none;
   position: fixed;
