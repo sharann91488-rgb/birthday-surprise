@@ -1,3 +1,35 @@
+/***********************
+ * GSAP FLOATING LOGIC *
+ ***********************/
+window.addEventListener("load", () => {
+  const floats = gsap.utils.toArray(".float");
+
+  floats.forEach((img, i) => {
+    const startY = window.innerHeight + 200;
+    const endY = -window.innerHeight - 200;
+
+    gsap.set(img, {
+      y: startY,
+      x: 0,
+      opacity: 1
+    });
+
+    gsap.to(img, {
+      y: endY,
+      duration: 35,
+      ease: "none",
+      repeat: -1,
+      delay: i * 6,   // staggered start → 3 then next 3
+      modifiers: {
+        x: () => Math.sin(Date.now() / 1000 + i) * 20
+      }
+    });
+  });
+});
+
+/************************
+ * MEMORY / STARS LOGIC *
+ ************************/
 let index = 0;
 
 const memories = [
