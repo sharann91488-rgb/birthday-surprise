@@ -1,15 +1,16 @@
-/********************************
- * GSAP FLOATING (3 + 3 SEQUENCE)
- ********************************/
+/*****************************************
+ * GSAP FLOATING: 3 IMAGES → THEN 3 IMAGES
+ *****************************************/
 window.addEventListener("load", () => {
   const batch1 = document.querySelectorAll(".f1, .f2, .f3");
   const batch2 = document.querySelectorAll(".f4, .f5, .f6");
 
-  const startY = window.innerHeight + 200;
-  const endY = -window.innerHeight - 200;
-  const duration = 36; // controls speed
+  const screenHeight = window.innerHeight;
+  const startY = screenHeight + 200;
+  const endY = -screenHeight - 200;
+  const duration = 30; // speed (higher = slower)
 
-  // ---------- BATCH 1 (first 3 images) ----------
+  // ---------- FIRST 3 IMAGES ----------
   batch1.forEach((img, i) => {
     gsap.set(img, {
       y: startY + i * 120,
@@ -22,16 +23,15 @@ window.addEventListener("load", () => {
       ease: "none",
       repeat: -1,
       modifiers: {
-        y: y => `${parseFloat(y) % (window.innerHeight + 400)}px`,
-        x: () => Math.sin(Date.now() / 1000 + i) * 18
+        y: y => `${parseFloat(y) % (screenHeight + 400)}px`
       }
     });
   });
 
-  // ---------- BATCH 2 (next 3 images) ----------
+  // ---------- NEXT 3 IMAGES ----------
   batch2.forEach((img, i) => {
     gsap.set(img, {
-      y: startY + i * 120 + (window.innerHeight / 2),
+      y: startY + i * 120 + screenHeight / 2,
       opacity: 1
     });
 
@@ -41,8 +41,7 @@ window.addEventListener("load", () => {
       ease: "none",
       repeat: -1,
       modifiers: {
-        y: y => `${parseFloat(y) % (window.innerHeight + 400)}px`,
-        x: () => Math.sin(Date.now() / 1000 + i + 3) * 18
+        y: y => `${parseFloat(y) % (screenHeight + 400)}px`
       }
     });
   });
