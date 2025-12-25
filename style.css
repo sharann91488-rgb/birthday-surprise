@@ -176,26 +176,19 @@ button {
   cursor: pointer;
   color: white;
 }
-/* ===== BIRTHDAY BLAST (VERY SIMPLE) ===== */
+/* ================= WOW BIRTHDAY BLAST ================= */
 .blast {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 10000;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 1.5s ease forwards;
 }
 
 .blast img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* very light overlay just for contrast */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
 }
 
 .blast-text {
@@ -206,26 +199,30 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: white;
+  animation: popIn 1.8s ease forwards;
 }
 
-/* Happy Birthday */
 .blast-text h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 600;
-  color: #111;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  margin-bottom: 8px;
+  font-size: clamp(32px, 6vw, 64px);
+  letter-spacing: 2px;
+  text-shadow: 0 0 25px rgba(255,255,255,0.8);
 }
 
-/* Sub text */
 .blast-text p {
-  font-size: 18px;
-  color: #222;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  font-size: 20px;
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
-/* fade animation */
+/* animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
 }
