@@ -14,84 +14,55 @@ body {
   overflow: hidden;
 }
 
-/* ================= FLOATING IMAGES (WOW MODE) ================= */
+/* ================= FLOATING IMAGES (SMOOTH MODE) ================= */
 .floating-images {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  perspective: 1000px; /* 3D depth */
 }
 
 /* COMMON FLOAT STYLE */
 .float {
   position: absolute;
-  bottom: -220px;
+  bottom: -200px;
   width: 160px;
   height: auto;
   opacity: 0;
   border-radius: 22px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 
-  /* Premium look */
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.6),
-    0 0 30px rgba(255,255,255,0.05);
-
-  /* WOW animation */
-  animation: floatWow 32s cubic-bezier(.22,.61,.36,1) infinite;
+  /* KEY FIX */
+  animation: floatSmooth 32s linear infinite;
   will-change: transform, opacity;
 }
 
-/* FIRST BATCH */
+/* FIRST 3 IMAGES */
 .f1 { left: 18%; animation-delay: 0s; }
 .f2 { left: 42%; animation-delay: 0s; }
 .f3 { left: 66%; animation-delay: 0s; }
 
-/* SECOND BATCH */
+/* NEXT 3 IMAGES */
 .f4 { left: 26%; animation-delay: 16s; }
 .f5 { left: 50%; animation-delay: 16s; }
 .f6 { left: 74%; animation-delay: 16s; }
 
-/* WOW FLOAT KEYFRAMES */
-@keyframes floatWow {
+/* SMOOTH FLOAT KEYFRAMES */
+@keyframes floatSmooth {
   0% {
-    transform:
-      translateY(0)
-      rotateX(12deg)
-      rotateZ(-3deg)
-      scale(0.92);
+    transform: translateY(0) translateX(0);
     opacity: 0;
   }
 
-  12% {
+  10% {
     opacity: 1;
   }
 
-  30% {
-    transform:
-      translateY(-35vh)
-      rotateX(0deg)
-      rotateZ(2deg)
-      translateX(-15px)
-      scale(1);
-  }
-
-  55% {
-    transform:
-      translateY(-70vh)
-      rotateZ(-2deg)
-      translateX(18px)
-      scale(1.05);
-  }
-
-  80% {
-    opacity: 0.9;
+  90% {
+    opacity: 1;
   }
 
   100% {
-    transform:
-      translateY(-140vh)
-      rotateZ(3deg)
-      scale(1.08);
+    transform: translateY(-140vh) translateX(-12px);
     opacity: 0;
   }
 }
@@ -152,11 +123,6 @@ button {
   box-shadow: 0 0 20px rgba(255,210,125,0.8);
   animation: starPulse 3s ease-in-out infinite alternate;
   cursor: pointer;
-}
-
-@keyframes starPulse {
-  from { transform: scale(0.9); opacity: 0.7; }
-  to { transform: scale(1.05); opacity: 1; }
 }
 
 /* ================= MODAL & BLAST (UNCHANGED) ================= */
