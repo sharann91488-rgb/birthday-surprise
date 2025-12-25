@@ -176,13 +176,13 @@ button {
   cursor: pointer;
   color: white;
 }
-/* ================= WOW BIRTHDAY BLAST ================= */
+/* ===== BIRTHDAY BLAST (CLEAN & SIMPLE) ===== */
 .blast {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 10000;
-  animation: fadeIn 1.5s ease forwards;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 .blast img {
@@ -191,17 +191,14 @@ button {
   object-fit: cover;
 }
 
-/* DARK OVERLAY FOR CONTRAST */
+/* subtle dark overlay for readability */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0.65)
-  );
+  background: rgba(0, 0, 0, 0.35);
 }
 
-/* TEXT CENTER */
+/* text container */
 .blast-text {
   position: absolute;
   inset: 0;
@@ -210,30 +207,30 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #ffffff;
 }
 
-/* 🎉 HAPPY BIRTHDAY TEXT */
+/* Happy Birthday text */
 .blast-text h1 {
-  font-size: clamp(34px, 6vw, 70px);
-  color: #ffb703; /* GOLD */
-  letter-spacing: 2px;
-  text-shadow:
-    0 0 10px rgba(255,183,3,0.9),
-    0 0 25px rgba(255,183,3,0.7),
-    0 0 45px rgba(255,183,3,0.6);
-  margin-bottom: 12px;
+  font-size: clamp(32px, 6vw, 60px);
+  font-weight: 600;
+  color: #111;                 /* DARK TEXT */
+  background: rgba(255,255,255,0.85);
+  padding: 12px 24px;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
-/* 💫 SUB TEXT */
+/* Sub text */
 .blast-text p {
-  font-size: 20px;
-  color: #ffd6a5; /* SOFT PEACH */
-  text-shadow:
-    0 0 10px rgba(255,214,165,0.7),
-    0 0 20px rgba(255,214,165,0.5);
+  font-size: 18px;
+  color: #222;
+  background: rgba(255,255,255,0.8);
+  padding: 8px 20px;
+  border-radius: 10px;
 }
 
-/* ANIMATIONS */
+/* fade animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
