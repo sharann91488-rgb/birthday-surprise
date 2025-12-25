@@ -14,26 +14,22 @@ body {
   overflow: hidden;
 }
 
-/* ================= FLOATING IMAGES (SMOOTH MODE) ================= */
+/* ================= FLOATING IMAGES (SMOOTH, CONTINUOUS) ================= */
 .floating-images {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-/* COMMON FLOAT STYLE */
 .float {
   position: absolute;
   bottom: -200px;
   width: 160px;
   height: auto;
   opacity: 0;
-  border-radius: 22px;
+  border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-
-  /* KEY FIX */
   animation: floatSmooth 32s linear infinite;
-  will-change: transform, opacity;
 }
 
 /* FIRST 3 IMAGES */
@@ -46,23 +42,19 @@ body {
 .f5 { left: 50%; animation-delay: 16s; }
 .f6 { left: 74%; animation-delay: 16s; }
 
-/* SMOOTH FLOAT KEYFRAMES */
 @keyframes floatSmooth {
   0% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0);
     opacity: 0;
   }
-
   10% {
     opacity: 1;
   }
-
   90% {
     opacity: 1;
   }
-
   100% {
-    transform: translateY(-140vh) translateX(-12px);
+    transform: translateY(-140vh);
     opacity: 0;
   }
 }
@@ -90,11 +82,12 @@ button {
   cursor: pointer;
 }
 
-/* ================= STARS PAGE (UNCHANGED) ================= */
+/* ================= STARS PAGE (RESTORED – UNTOUCHED LOGIC) ================= */
 .stars-page {
   background: radial-gradient(circle at bottom, #020024, #000);
   height: 100vh;
   color: white;
+  position: relative;
 }
 
 .title {
@@ -125,7 +118,29 @@ button {
   cursor: pointer;
 }
 
-/* ================= MODAL & BLAST (UNCHANGED) ================= */
+@keyframes starPulse {
+  from { transform: scale(0.9); opacity: 0.7; }
+  to { transform: scale(1.05); opacity: 1; }
+}
+
+/* STAR POSITIONS (ALL 15 – RESTORED) */
+.star:nth-child(1){top:15%;left:10%}
+.star:nth-child(2){top:25%;left:30%}
+.star:nth-child(3){top:35%;left:50%}
+.star:nth-child(4){top:45%;left:70%}
+.star:nth-child(5){top:55%;left:85%}
+.star:nth-child(6){top:65%;left:60%}
+.star:nth-child(7){top:20%;left:80%}
+.star:nth-child(8){top:40%;left:20%}
+.star:nth-child(9){top:60%;left:40%}
+.star:nth-child(10){top:70%;left:15%}
+.star:nth-child(11){top:10%;left:50%}
+.star:nth-child(12){top:75%;left:75%}
+.star:nth-child(13){top:80%;left:30%}
+.star:nth-child(14){top:30%;left:90%}
+.star:nth-child(15){top:85%;left:55%}
+
+/* ================= MODAL ================= */
 .modal {
   display: none;
   position: fixed;
@@ -162,6 +177,7 @@ button {
   color: white;
 }
 
+/* ================= BIRTHDAY BLAST ================= */
 .blast {
   display: none;
   position: fixed;
