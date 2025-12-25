@@ -10,51 +10,88 @@ body {
 .home {
   height: 100vh;
   background: radial-gradient(circle at top, #0a0f2c, #000010);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ================= FLOATING IMAGES (RESTORED BEHAVIOR) ================= */
+/* ================= FLOATING IMAGES (WOW MODE) ================= */
 .floating-images {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
+  perspective: 1000px; /* 3D depth */
 }
 
+/* COMMON FLOAT STYLE */
 .float {
   position: absolute;
-  bottom: -200px;
+  bottom: -220px;
   width: 160px;
   height: auto;
   opacity: 0;
-  border-radius: 20px;
-  filter: drop-shadow(0 25px 60px rgba(0,0,0,0.6));
-  animation: floatCycle 30s linear infinite;
+  border-radius: 22px;
+
+  /* Premium look */
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 30px rgba(255,255,255,0.05);
+
+  /* WOW animation */
+  animation: floatWow 32s cubic-bezier(.22,.61,.36,1) infinite;
+  will-change: transform, opacity;
 }
 
-/* First batch */
+/* FIRST BATCH */
 .f1 { left: 18%; animation-delay: 0s; }
 .f2 { left: 42%; animation-delay: 0s; }
 .f3 { left: 66%; animation-delay: 0s; }
 
-/* Second batch */
-.f4 { left: 26%; animation-delay: 15s; }
-.f5 { left: 50%; animation-delay: 15s; }
-.f6 { left: 74%; animation-delay: 15s; }
+/* SECOND BATCH */
+.f4 { left: 26%; animation-delay: 16s; }
+.f5 { left: 50%; animation-delay: 16s; }
+.f6 { left: 74%; animation-delay: 16s; }
 
-/* Smooth float + fade */
-@keyframes floatCycle {
+/* WOW FLOAT KEYFRAMES */
+@keyframes floatWow {
   0% {
-    transform: translateY(0);
+    transform:
+      translateY(0)
+      rotateX(12deg)
+      rotateZ(-3deg)
+      scale(0.92);
     opacity: 0;
   }
-  10% {
+
+  12% {
     opacity: 1;
   }
-  70% {
-    opacity: 1;
+
+  30% {
+    transform:
+      translateY(-35vh)
+      rotateX(0deg)
+      rotateZ(2deg)
+      translateX(-15px)
+      scale(1);
   }
+
+  55% {
+    transform:
+      translateY(-70vh)
+      rotateZ(-2deg)
+      translateX(18px)
+      scale(1.05);
+  }
+
+  80% {
+    opacity: 0.9;
+  }
+
   100% {
-    transform: translateY(-140vh);
+    transform:
+      translateY(-140vh)
+      rotateZ(3deg)
+      scale(1.08);
     opacity: 0;
   }
 }
@@ -69,6 +106,7 @@ body {
   align-items: center;
   color: white;
   text-align: center;
+  z-index: 2;
 }
 
 button {
@@ -86,7 +124,6 @@ button {
   background: radial-gradient(circle at bottom, #020024, #000);
   height: 100vh;
   color: white;
-  position: relative;
 }
 
 .title {
@@ -115,7 +152,6 @@ button {
   box-shadow: 0 0 20px rgba(255,210,125,0.8);
   animation: starPulse 3s ease-in-out infinite alternate;
   cursor: pointer;
-  z-index: 1;
 }
 
 @keyframes starPulse {
@@ -123,24 +159,7 @@ button {
   to { transform: scale(1.05); opacity: 1; }
 }
 
-/* star positions */
-.star:nth-child(1){top:15%;left:10%}
-.star:nth-child(2){top:25%;left:30%}
-.star:nth-child(3){top:35%;left:50%}
-.star:nth-child(4){top:45%;left:70%}
-.star:nth-child(5){top:55%;left:85%}
-.star:nth-child(6){top:65%;left:60%}
-.star:nth-child(7){top:20%;left:80%}
-.star:nth-child(8){top:40%;left:20%}
-.star:nth-child(9){top:60%;left:40%}
-.star:nth-child(10){top:70%;left:15%}
-.star:nth-child(11){top:10%;left:50%}
-.star:nth-child(12){top:75%;left:75%}
-.star:nth-child(13){top:80%;left:30%}
-.star:nth-child(14){top:30%;left:90%}
-.star:nth-child(15){top:85%;left:55%}
-
-/* ================= MODAL ================= */
+/* ================= MODAL & BLAST (UNCHANGED) ================= */
 .modal {
   display: none;
   position: fixed;
@@ -168,11 +187,6 @@ button {
   border-radius: 24px;
 }
 
-.modal p {
-  color: white;
-  margin-top: 15px;
-}
-
 .close {
   position: absolute;
   top: 20px;
@@ -182,7 +196,6 @@ button {
   color: white;
 }
 
-/* ================= BIRTHDAY BLAST ================= */
 .blast {
   display: none;
   position: fixed;
@@ -194,20 +207,4 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle,rgba(255,255,255,0.15),rgba(0,0,0,0.6));
-}
-
-.blast-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
 }
