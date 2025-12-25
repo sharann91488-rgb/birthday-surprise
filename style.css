@@ -137,55 +137,78 @@ to { transform: scale(1.05); opacity: 1; }
 .star:nth-child(13){top:80%;left:30%} 
 .star:nth-child(14){top:30%;left:90%} 
 .star:nth-child(15){top:85%;left:55%} 
-/* ===== MODAL ===== */ 
-.modal { 
-display: none; 
-position: fixed; 
-inset: 0; 
-background: rgba(0,0,0,0.85); 
-backdrop-filter: blur(8px); 
-text-align: center; 
-padding-top: 50px; 
-} 
-.modal img, 
-.modal video { 
-max-width: 80%; 
-max-height: 60vh; 
-border-radius: 24px; 
-} 
-.modal p { 
-color: white; 
-margin-top: 15px; 
-} 
-.close { 
-position: absolute; 
-top: 20px; 
-right: 30px; 
-font-size: 30px; 
-cursor: pointer; 
-} 
-/* ===== BIRTHDAY BLAST ===== */ 
-.blast { 
-display: none; 
-position: fixed; 
-inset: 0; 
-} 
-.blast img { 
-width: 100%; 
-height: 100%; 
-object-fit: cover; 
-} 
-.overlay { 
-position: absolute; 
-inset: 0; 
-background: radial-gradient(circle,rgba(255,255,255,0.15),rgba(0,0,0,0.6)); 
-} 
-.blast-text { 
-position: absolute; 
-inset: 0; 
-display: flex; 
-justify-content: center; 
-align-items: center; 
-flex-direction: column; 
-color: white; 
+/* ===== MODAL (FIXED) ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 9999;                 /* 🔥 THIS FIXES IT */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content {
+  max-width: 85%;
+  max-height: 80vh;
+  text-align: center;
+}
+
+.modal img,
+.modal video {
+  max-width: 100%;
+  max-height: 65vh;
+  border-radius: 24px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.2);
+}
+
+.modal p {
+  color: white;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+/* ===== BIRTHDAY BLAST (FIXED) ===== */
+.blast {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;                /* ABOVE MODAL */
+}
+
+.blast img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.15),
+    rgba(0,0,0,0.6)
+  );
+}
+
+.blast-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
 }
